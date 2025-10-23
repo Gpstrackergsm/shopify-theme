@@ -1,0 +1,54 @@
+{%- comment -%}
+  Product template displaying images, product information, and add-to-cart form.
+{%- endcomment -%}
+<section class="section" itemscope itemtype="https://schema.org/Product">
+  <div class="product" id="Product-{{ product.id }}">
+    <div class="product__media">
+      {% if product.media.size > 0 %}
+        {% for media in product.media %}
+          <figure class="product__figure" data-media-type="{{ media.media_type }}">
+            {{ media | media_tag: image_size: "1024x" }}
+          </figure>
+        {% endfor %}
+      {% else %}
+        <div class="product__placeholder" role="presentation"></div>
+      {% endif %}
+    </div>
+    <div class="product__details">
+      <h1 itemprop="name">{{ product.title }}</h1>
+      <div class="product__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <link itemprop="availability" href="https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+        <span itemprop="priceCurrency" content="{{ cart.currency.iso_code }}"></span>
+        <span itemprop="price">{{ product.price | money }}</span>
+      </div>
+      <div class="product__description" itemprop="description">
+        {{ product.description | default: 'products.product.description' | t }}
+      </div>
+      {% form 'product', product %}
+        {% unless product.has_only_default_variant %}
+          <div class="product__options">
+            {% for option in product.options_with_values %}
+              <label for="Option-{{ option.position }}">{{ option.name }}</label>
+              <select id="Option-{{ option.position }}" name="options[{{ option.name }}]">
+                {% for value in option.values %}
+                  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
+                {% endfor %}
+              </select>
+            {% endfor %}
+          </div>
+        {% endunless %}
+        <div class="product__actions">
+          <label for="Quantity-{{ product.id }}" class="visually-hidden">{{ 'products.product.quantity' | t }}</label>
+          <input id="Quantity-{{ product.id }}" name="quantity" type="number" min="1" value="1">
+          <button type="submit" class="product-card__cta" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>

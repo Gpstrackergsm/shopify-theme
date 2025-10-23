@@ -1,0 +1,27 @@
+{%- comment -%}
+  Snippet that renders an individual product tile with image, title, price, and call to action.
+{%- endcomment -%}
+<article class="product-card" aria-labelledby="ProductCard-{{ product.id }}-Title">
+  <div class="product-card__media">
+    <a href="{{ product.url }}" class="product-card__link">
+      {% if product.featured_image %}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          loading="lazy"
+          width="{{ product.featured_image.width }}"
+          height="{{ product.featured_image.height }}"
+        >
+      {% else %}
+        <div class="product-card__placeholder" role="presentation"></div>
+      {% endif %}
+    </a>
+  </div>
+  <div class="product-card__content">
+    <h3 id="ProductCard-{{ product.id }}-Title" class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    <span class="product-card__price">{{ product.price | money }}</span>
+    <a class="product-card__cta" href="{{ product.url }}">{{ 'products.product.view_full_details' | t }}</a>
+  </div>
+</article>

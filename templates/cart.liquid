@@ -1,0 +1,47 @@
+{%- comment -%}
+  Cart template providing an overview of items with update and checkout controls.
+{%- endcomment -%}
+<section class="section" aria-labelledby="CartTitle">
+  <h1 id="CartTitle" class="section__heading">{{ 'templates.cart.title' | t }}</h1>
+  {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" novalidate>
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th scope="col">{{ 'cart.label.product' | t }}</th>
+            <th scope="col">{{ 'cart.label.quantity' | t }}</th>
+            <th scope="col">{{ 'cart.label.total' | t }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+            <tr>
+              <td>
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+                {% if item.variant.title != 'Default Title' %}
+                  <div class="cart-table__variant">{{ item.variant.title }}</div>
+                {% endif %}
+              </td>
+              <td>
+                <input type="number" name="updates[]" min="0" value="{{ item.quantity }}" aria-label="{{ 'cart.label.quantity' | t }}">
+              </td>
+              <td>{{ item.line_price | money }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="cart-summary">
+        <div class="cart-summary__totals">
+          <span>{{ 'cart.general.subtotal' | t }}</span>
+          <strong>{{ cart.total_price | money }}</strong>
+        </div>
+        <div class="cart-summary__actions">
+          <button name="update" class="product-card__cta" type="submit">{{ 'cart.general.update' | t }}</button>
+          <button name="checkout" class="product-card__cta" type="submit">{{ 'cart.general.checkout' | t }}</button>
+        </div>
+      </div>
+    </form>
+  {% else %}
+    <p>{{ 'templates.cart.empty' | t }}</p>
+  {% endif %}
+</section>
