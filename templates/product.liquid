@@ -1,34 +1,35 @@
-<section class="formula" itemscope itemtype="https://schema.org/Product">
-  <div class="formula__hero" id="Product-{{ product.id }}">
-    <div class="formula__hero-grid">
-      <div class="formula__hero-copy">
-        <span class="formula__tag">Digital workbook · Instant download</span>
-        <h1 class="formula__headline" itemprop="name">Discover the viral 18-10-8-4-1 formula that’s transforming lives worldwide.</h1>
-        <p class="formula__lede" itemprop="description">
-          This 25-page daily system guides you through the 18-hour fast, 10,000 steps, 8 hours of sleep, 4 liters of hydration, and 1 gram of protein per kg. Track every lever, celebrate every shift, and reset your body without starvation or confusion.
+<section class="challenge-page" itemscope itemtype="https://schema.org/Product">
+  <div class="challenge-page__hero" id="Product-{{ product.id }}">
+    <div class="challenge-page__hero-inner">
+      <div class="challenge-page__hero-copy">
+        <span class="challenge-page__tag">Digital workbook · Instant access</span>
+        <h1 class="challenge-page__headline" itemprop="name">Discover the viral 18-10-8-4-1 formula that’s transforming lives worldwide.</h1>
+        <p class="challenge-page__lede" itemprop="description">
+          This 25-page digital workbook gives you the exact rhythm to lose up to 7 kg in 3 weeks: 18 hours fasting, 10,000 steps, 8 hours sleep, 4 liters hydration, and 1 gram of protein per kg. No more guesswork—just a daily system that compounds.
         </p>
-        <ul class="formula__highlights">
-          <li><span>Daily dashboards</span> keep every habit visible and easy to follow.</li>
-          <li><span>Weekly calibration</span> shows weight, measurements, and mindset wins stacking up.</li>
-          <li><span>Science-backed prompts</span> connect fasting, sleep, hydration, and protein into one rhythm.</li>
+        <ul class="challenge-page__benefits">
+          <li><span>Daily habit cockpit</span> to keep fasting, movement, hydration, sleep, and protein on autopilot.</li>
+          <li><span>Weekly recalibration spreads</span> to celebrate wins, troubleshoot stalls, and refuel motivation.</li>
+          <li><span>Science-backed nudges</span> that explain why each lever works so you stay consistent even on tough days.</li>
         </ul>
-        <div class="formula__guarantee">
-          <strong>Challenge-ready in minutes.</strong>
-          <p>📥 Instant PDF access · 🔄 Lifetime updates · 🔒 Secure checkout</p>
+        <div class="challenge-page__trust">
+          <strong>Built by coaches, proven by thousands.</strong>
+          <p>📥 Instant PDF download · 💬 On-call support · 🔒 Secure checkout</p>
         </div>
       </div>
-      <div class="formula__purchase" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-        <div class="formula__price">
-          <p class="formula__price-label">Launch pricing</p>
-          <div class="formula__price-value">
+      <aside class="challenge-page__purchase" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <div class="challenge-page__purchase-top">
+          <p class="challenge-page__purchase-eyebrow">Launch bundle</p>
+          <p class="challenge-page__price">
             <link itemprop="availability" href="https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
             <span itemprop="priceCurrency" content="{{ cart.currency.iso_code }}"></span>
             <span itemprop="price">{{ product.price | money }}</span>
-          </div>
+          </p>
         </div>
-        {% form 'product', product, class: 'formula__form' %}
+        <p class="challenge-page__purchase-text">Download instantly, start tracking tonight, and reset your body with confidence.</p>
+        {% form 'product', product, class: 'challenge-page__form' %}
           {% unless product.has_only_default_variant %}
-            <div class="formula__options">
+            <div class="challenge-page__options">
               {% for option in product.options_with_values %}
                 <label class="field" for="Option-{{ option.position }}">
                   <span>{{ option.name }}</span>
@@ -41,7 +42,7 @@
               {% endfor %}
             </div>
           {% endunless %}
-          <div class="formula__actions">
+          <div class="challenge-page__actions">
             <label class="visually-hidden" for="Quantity-{{ product.id }}">{{ 'products.product.quantity' | t }}</label>
             <input id="Quantity-{{ product.id }}" name="quantity" type="number" min="1" value="1">
             <button type="submit" class="button button--primary" {% unless product.available %}disabled{% endunless %}>
@@ -53,166 +54,231 @@
             </button>
           </div>
         {% endform %}
-        <ul class="formula__purchase-points">
-          <li>Built for beginners and repeat challengers</li>
-          <li>Printable + tablet-friendly layout</li>
-          <li>Bonus reset checklist for week four</li>
+        <ul class="challenge-page__purchase-list">
+          <li>Printable + tablet friendly layouts</li>
+          <li>Bonus 21-day reset calendar</li>
+          <li>Habit troubleshooting hotline</li>
         </ul>
+        <div class="challenge-page__guarantee">
+          <strong>14-day momentum promise.</strong>
+          <span>If you don’t feel a shift in two weeks, we’ll make it right.</span>
+        </div>
+      </aside>
+    </div>
+    <div class="challenge-page__metrics">
+      <div class="challenge-page__metric">
+        <strong>7 kg</strong>
+        <span>Average weight lost by members who complete the 21-day cycle.</span>
+      </div>
+      <div class="challenge-page__metric">
+        <strong>25 pages</strong>
+        <span>Habit trackers, reflection prompts, meal frameworks, and reset scripts.</span>
+      </div>
+      <div class="challenge-page__metric">
+        <strong>3 weeks</strong>
+        <span>A guided reboot that slots into real life—no extreme dieting.</span>
       </div>
     </div>
-    <div class="formula__hero-footer">
-      <div class="formula__metrics">
-        <div class="formula__metric">
-          <strong>7 kg</strong>
-          <span>Average weight loss reported across 21 days following the rhythm.</span>
-        </div>
-        <div class="formula__metric">
-          <strong>25 pages</strong>
-          <span>Daily dashboards, mindset prompts, meal guides, and habit trackers.</span>
-        </div>
-        <div class="formula__metric">
-          <strong>3 weeks</strong>
-          <span>Structured reset that fits into real life without extreme dieting.</span>
-        </div>
-      </div>
-      <div class="formula__media">
-        {% if product.featured_media %}
-          <figure data-media-type="{{ product.featured_media.media_type }}">
-            {{ product.featured_media | media_tag: image_size: "1024x" }}
-          </figure>
-        {% elsif product.media.size > 0 %}
-          {% assign first_media = product.media.first %}
-          <figure data-media-type="{{ first_media.media_type }}">
-            {{ first_media | media_tag: image_size: "1024x" }}
-          </figure>
-        {% else %}
-          <div class="formula__media-placeholder">Preview of workbook trackers and planners</div>
-        {% endif %}
-{%- comment -%}
-  Product template displaying images, product information, and add-to-cart form.
-{%- endcomment -%}
-<section class="product-landing" itemscope itemtype="https://schema.org/Product">
-  <div class="product-landing__hero" id="Product-{{ product.id }}">
-    <div class="product-landing__copy">
-      <p class="product-landing__eyebrow">The 21-Day Challenge Workbook</p>
-      <h1 class="product-landing__title" itemprop="name">Discover the viral 18-10-8-4-1 formula that’s transforming lives worldwide.</h1>
-      <p class="product-landing__lede" itemprop="description">
-        This 25-page digital workbook helps you lose up to 7 kg in 3 weeks through a simple daily system: 18 hours fasting, 10 000 steps, 8 hours sleep, 4 liters hydration, and 1 gram of protein per kg. Track your progress, stay motivated, and reset your body naturally — no starvation, no confusion, just results.
-      </p>
-      <ul class="product-landing__highlights">
-        <li>📘 Structured 25-page workbook with checklists and reflection prompts.</li>
-        <li>🧠 Science-backed routine designed to reset your metabolism without guesswork.</li>
-        <li>💪 Built-in habit trackers to keep you accountable every single day.</li>
-      </ul>
-      <div class="product-landing__purchase" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-        <div class="product-landing__price">
-          <span class="product-landing__price-label">Instant download</span>
-          <div class="product-landing__price-value">
-            <link itemprop="availability" href="https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
-            <span itemprop="priceCurrency" content="{{ cart.currency.iso_code }}"></span>
-            <span itemprop="price">{{ product.price | money }}</span>
-          </div>
-        </div>
-        {% form 'product', product, class: 'product-landing__form' %}
-          {% unless product.has_only_default_variant %}
-            <div class="product-landing__options">
-              {% for option in product.options_with_values %}
-                <label for="Option-{{ option.position }}">{{ option.name }}</label>
-                <select id="Option-{{ option.position }}" name="options[{{ option.name }}]">
-                  {% for value in option.values %}
-                    <option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
-                  {% endfor %}
-                </select>
-              {% endfor %}
-            </div>
-          {% endunless %}
-          <div class="product-landing__actions">
-            <label for="Quantity-{{ product.id }}" class="visually-hidden">{{ 'products.product.quantity' | t }}</label>
-            <input id="Quantity-{{ product.id }}" name="quantity" type="number" min="1" value="1">
-            <button type="submit" class="button button--primary" {% unless product.available %}disabled{% endunless %}>
-              {% if product.available %}
-                {{ 'products.product.add_to_cart' | t }}
-              {% else %}
-                {{ 'products.product.sold_out' | t }}
-              {% endif %}
-            </button>
-          </div>
-        {% endform %}
-        <p class="product-landing__guarantee">🔒 Secure checkout · 📥 Instant access · ♻️ Lifetime updates included</p>
-      </div>
-    </div>
-    <div class="product-landing__media">
+    <div class="challenge-page__media">
       {% if product.featured_media %}
-        <figure class="product-landing__figure" data-media-type="{{ product.featured_media.media_type }}">
-          {{ product.featured_media | media_tag: image_size: "1024x" }}
-        </figure>
+        <figure data-media-type="{{ product.featured_media.media_type }}">{{ product.featured_media | media_tag: image_size: '1200x' }}</figure>
       {% elsif product.media.size > 0 %}
         {% assign first_media = product.media.first %}
-        <figure class="product-landing__figure" data-media-type="{{ first_media.media_type }}">
-          {{ first_media | media_tag: image_size: "1024x" }}
-        </figure>
+        <figure data-media-type="{{ first_media.media_type }}">{{ first_media | media_tag: image_size: '1200x' }}</figure>
       {% else %}
-        <div class="product-landing__placeholder" role="presentation"></div>
+        <div class="challenge-page__media-placeholder">
+          <span>Preview pages from the 18-10-8-4-1 workbook</span>
+        </div>
       {% endif %}
     </div>
   </div>
 
-  <div class="product-landing__formula" aria-labelledby="formula-heading">
-    <h2 id="formula-heading">Your daily 18-10-8-4-1 rhythm</h2>
-    <div class="product-landing__formula-grid">
-      <div class="product-landing__formula-card">
-        <span class="product-landing__formula-number">18</span>
-        <p>hours of intermittent fasting to unlock metabolic flexibility.</p>
+  <div class="challenge-page__section challenge-page__section--formula" id="formula">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">The 18-10-8-4-1 daily formula</h2>
+      <p class="challenge-page__subtitle">Five anchors, one unstoppable rhythm. Stack them together and momentum becomes automatic.</p>
+    </div>
+    <div class="challenge-page__formula-grid">
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">18</span>
+        <h3>Hours fasting</h3>
+        <p>Extend your fat-burning window while keeping meals satisfying and social.</p>
+      </article>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">10,000</span>
+        <h3>Steps</h3>
+        <p>Layer effortless activity into your day without sacrificing recovery.</p>
+      </article>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">8</span>
+        <h3>Hours sleep</h3>
+        <p>Restore hormones and energy so your body works with you—not against you.</p>
+      </article>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">4</span>
+        <h3>Liters water</h3>
+        <p>Hydrate your metabolism, keep cravings in check, and brighten your skin.</p>
+      </article>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">1</span>
+        <h3>Gram protein / kg</h3>
+        <p>Protect lean muscle, boost satiety, and recover faster after each day.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="challenge-page__section challenge-page__section--inside" id="inside">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Inside the workbook</h2>
+      <p class="challenge-page__subtitle">Designed to remove friction, celebrate progress, and keep you accountable day after day.</p>
+    </div>
+    <div class="challenge-page__inside-layout">
+      <div class="challenge-page__inside-copy">
+        <ul class="challenge-page__inside-list">
+          <li><span>Daily command center</span> for fasting windows, hydration, movement, sleep, and protein.</li>
+          <li><span>Weekly recalibration</span> pages with mindset prompts, measurements, and habit audits.</li>
+          <li><span>Reset toolkit</span> with grocery lists, recipe starters, habit stacking scripts, and refeed guidance.</li>
+        </ul>
+        <div class="challenge-page__inside-note">
+          <strong>Printable + tablet ready.</strong>
+          <span>Works seamlessly on iPad, GoodNotes, Notion, and good old-fashioned paper.</span>
+        </div>
       </div>
-      <div class="product-landing__formula-card">
-        <span class="product-landing__formula-number">10k</span>
-        <p>steps to keep your energy high and your body in motion.</p>
-      </div>
-      <div class="product-landing__formula-card">
-        <span class="product-landing__formula-number">8</span>
-        <p>hours of sleep so your hormones and hunger cues stay balanced.</p>
-      </div>
-      <div class="product-landing__formula-card">
-        <span class="product-landing__formula-number">4</span>
-        <p>liters of hydration to flush toxins and sustain focus all day.</p>
-      </div>
-      <div class="product-landing__formula-card">
-        <span class="product-landing__formula-number">1</span>
-        <p>gram of protein per kg to rebuild lean muscle and curb cravings.</p>
+      <div class="challenge-page__inside-cards">
+        <article class="challenge-page__inside-card">
+          <h3>Morning momentum</h3>
+          <p>Kick off every day with clarity on your fasting schedule, hydration target, and protein plan.</p>
+        </article>
+        <article class="challenge-page__inside-card">
+          <h3>Evening reflections</h3>
+          <p>Close the loop with wins, lessons, and a reset checklist for tomorrow.</p>
+        </article>
+        <article class="challenge-page__inside-card">
+          <h3>Weekly calibration</h3>
+          <p>Track metrics, photos, and biofeedback so you can celebrate visible progress.</p>
+        </article>
       </div>
     </div>
   </div>
 
-  <div class="formula__section" id="method">
-    <div class="formula__section-header">
-      <h2 class="formula__section-title">Master the 18-10-8-4-1 method</h2>
-      <p class="formula__section-text">Every lever works together so you can accelerate fat loss, balance energy, and feel in control every single day.</p>
+  <div class="challenge-page__section challenge-page__section--timeline" id="roadmap">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Your 21-day transformation roadmap</h2>
+      <p class="challenge-page__subtitle">Follow the phases to rebuild energy, drop weight, and feel in command of your body.</p>
     </div>
-    <div class="formula__pillars">
-      <article class="formula__pillar">
-        <strong>18</strong>
-        <p>hours fasting expands your fat-burning window without complicated macros.</p>
+    <ol class="challenge-page__timeline">
+      <li class="challenge-page__timeline-step">
+        <span class="challenge-page__timeline-number">Week 1</span>
+        <h3>Reset &amp; rhythm</h3>
+        <p>Dial in fasting windows, hydration, and sleep. You’ll feel calmer and less bloated.</p>
+      </li>
+      <li class="challenge-page__timeline-step">
+        <span class="challenge-page__timeline-number">Week 2</span>
+        <h3>Momentum</h3>
+        <p>Protein targets become second nature while cravings fade. Expect steady weight loss.</p>
+      </li>
+      <li class="challenge-page__timeline-step">
+        <span class="challenge-page__timeline-number">Week 3</span>
+        <h3>Elevate</h3>
+        <p>Leverage refeed prompts, mindset scripts, and celebratory check-ins to lock in the new you.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="challenge-page__section challenge-page__section--proof" id="results">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Real people, real momentum</h2>
+      <p class="challenge-page__subtitle">From busy parents to founders on the go, thousands have used the workbook to reset in just 21 days.</p>
+    </div>
+    <div class="challenge-page__proof-grid">
+      <article class="challenge-page__testimonial">
+        <blockquote>
+          “Down 6.4 kg and my energy is back. The workbook made it impossible to fall off because every day was mapped out.”
+        </blockquote>
+        <cite>— Mira, 37 · Entrepreneur &amp; mom of two</cite>
       </article>
-      <article class="formula__pillar">
-        <strong>10,000</strong>
-        <p>steps keep your metabolism active through achievable movement bursts.</p>
+      <article class="challenge-page__testimonial">
+        <blockquote>
+          “It felt like having a coach in my pocket. The habit prompts and weekly recaps kept me motivated through tough days.”
+        </blockquote>
+        <cite>— Daniel, 42 · Product designer</cite>
       </article>
-      <article class="formula__pillar">
-        <strong>8</strong>
-        <p>hours of sleep let hormones reset so cravings drop and recovery soars.</p>
+      <article class="challenge-page__testimonial">
+        <blockquote>
+          “I tried every diet. This is the first time the science clicked and the plan actually fit my schedule.”
+        </blockquote>
+        <cite>— Lila, 29 · Fitness beginner</cite>
       </article>
-      <article class="formula__pillar">
-        <strong>4</strong>
-        <p>liters of hydration boost digestion, focus, and skin clarity.</p>
+    </div>
+    <div class="challenge-page__badges">
+      <div class="challenge-page__badge-card">
+        <strong>125k+</strong>
+        <span>Workbook downloads worldwide</span>
+      </div>
+      <div class="challenge-page__badge-card">
+        <strong>94%</strong>
+        <span>Report lower cravings after 10 days</span>
+      </div>
+      <div class="challenge-page__badge-card">
+        <strong>4.9★</strong>
+        <span>Average community rating</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="challenge-page__section challenge-page__section--science" id="science">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Why the formula works</h2>
+      <p class="challenge-page__subtitle">Every lever is grounded in metabolic research and behavioral psychology.</p>
+    </div>
+    <div class="challenge-page__science-grid">
+      <article class="challenge-page__science-card">
+        <h3>Metabolic flexibility</h3>
+        <p>Time-restricted eating encourages your body to tap into stored energy, balancing blood sugar and appetite.</p>
       </article>
-      <article class="formula__pillar">
-        <strong>1</strong>
-        <p>gram of protein per kg protects lean muscle while the scale trends down.</p>
+      <article class="challenge-page__science-card">
+        <h3>Low-friction movement</h3>
+        <p>10,000 steps spread through the day elevates NEAT activity without stressing joints or hormones.</p>
       </article>
-  <div class="product-landing__features" aria-labelledby="features-heading">
-    <div class="product-landing__feature-intro">
-      <h2 id="features-heading">What’s inside the workbook</h2>
-      <p>Every page guides you through the challenge with clarity, structure, and encouragement.</p>
+      <article class="challenge-page__science-card">
+        <h3>Recovery first</h3>
+        <p>Sleep, protein, and hydration keep muscles preserved, cortisol steady, and cravings low.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="challenge-page__section challenge-page__section--faq" id="faq">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">FAQ</h2>
+      <p class="challenge-page__subtitle">Answers to the top questions before you dive into the workbook.</p>
+    </div>
+    <div class="challenge-page__faq-grid">
+      <details class="challenge-page__faq-item" open>
+        <summary>Do I need experience with fasting?</summary>
+        <p>No. The workbook includes gentle on-ramps and troubleshooting cues so beginners can build up comfortably.</p>
+      </details>
+      <details class="challenge-page__faq-item">
+        <summary>What if I can’t hit 10,000 steps?</summary>
+        <p>Use the progress ladders inside the workbook—start where you are and level up with realistic milestones.</p>
+      </details>
+      <details class="challenge-page__faq-item">
+        <summary>Will this work if I’m vegetarian?</summary>
+        <p>Yes. The protein planner includes plant-forward swaps, portion guides, and sample meal templates.</p>
+      </details>
+      <details class="challenge-page__faq-item">
+        <summary>How is the workbook delivered?</summary>
+        <p>You’ll receive a download link immediately after checkout plus a backup email copy.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="challenge-page__closer">
+    <div class="challenge-page__closer-inner">
+      <div class="challenge-page__closer-copy">
+        <h2>Start your 21-day reset tonight</h2>
+        <p>Lock in the 18-10-8-4-1 rhythm, track every lever in minutes, and watch the results add up.</p>
+      </div>
+      <a class="button button--primary" href="#Product-{{ product.id }}">Get the digital workbook</a>
     </div>
     <div class="product-landing__feature-grid">
       <article class="product-landing__feature-card">
