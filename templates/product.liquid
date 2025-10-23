@@ -1,3 +1,93 @@
+<section class="formula" itemscope itemtype="https://schema.org/Product">
+  <div class="formula__hero" id="Product-{{ product.id }}">
+    <div class="formula__hero-grid">
+      <div class="formula__hero-copy">
+        <span class="formula__tag">Digital workbook · Instant download</span>
+        <h1 class="formula__headline" itemprop="name">Discover the viral 18-10-8-4-1 formula that’s transforming lives worldwide.</h1>
+        <p class="formula__lede" itemprop="description">
+          This 25-page daily system guides you through the 18-hour fast, 10,000 steps, 8 hours of sleep, 4 liters of hydration, and 1 gram of protein per kg. Track every lever, celebrate every shift, and reset your body without starvation or confusion.
+        </p>
+        <ul class="formula__highlights">
+          <li><span>Daily dashboards</span> keep every habit visible and easy to follow.</li>
+          <li><span>Weekly calibration</span> shows weight, measurements, and mindset wins stacking up.</li>
+          <li><span>Science-backed prompts</span> connect fasting, sleep, hydration, and protein into one rhythm.</li>
+        </ul>
+        <div class="formula__guarantee">
+          <strong>Challenge-ready in minutes.</strong>
+          <p>📥 Instant PDF access · 🔄 Lifetime updates · 🔒 Secure checkout</p>
+        </div>
+      </div>
+      <div class="formula__purchase" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <div class="formula__price">
+          <p class="formula__price-label">Launch pricing</p>
+          <div class="formula__price-value">
+            <link itemprop="availability" href="https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+            <span itemprop="priceCurrency" content="{{ cart.currency.iso_code }}"></span>
+            <span itemprop="price">{{ product.price | money }}</span>
+          </div>
+        </div>
+        {% form 'product', product, class: 'formula__form' %}
+          {% unless product.has_only_default_variant %}
+            <div class="formula__options">
+              {% for option in product.options_with_values %}
+                <label class="field" for="Option-{{ option.position }}">
+                  <span>{{ option.name }}</span>
+                  <select id="Option-{{ option.position }}" name="options[{{ option.name }}]">
+                    {% for value in option.values %}
+                      <option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </label>
+              {% endfor %}
+            </div>
+          {% endunless %}
+          <div class="formula__actions">
+            <label class="visually-hidden" for="Quantity-{{ product.id }}">{{ 'products.product.quantity' | t }}</label>
+            <input id="Quantity-{{ product.id }}" name="quantity" type="number" min="1" value="1">
+            <button type="submit" class="button button--primary" {% unless product.available %}disabled{% endunless %}>
+              {% if product.available %}
+                {{ 'products.product.add_to_cart' | t }}
+              {% else %}
+                {{ 'products.product.sold_out' | t }}
+              {% endif %}
+            </button>
+          </div>
+        {% endform %}
+        <ul class="formula__purchase-points">
+          <li>Built for beginners and repeat challengers</li>
+          <li>Printable + tablet-friendly layout</li>
+          <li>Bonus reset checklist for week four</li>
+        </ul>
+      </div>
+    </div>
+    <div class="formula__hero-footer">
+      <div class="formula__metrics">
+        <div class="formula__metric">
+          <strong>7 kg</strong>
+          <span>Average weight loss reported across 21 days following the rhythm.</span>
+        </div>
+        <div class="formula__metric">
+          <strong>25 pages</strong>
+          <span>Daily dashboards, mindset prompts, meal guides, and habit trackers.</span>
+        </div>
+        <div class="formula__metric">
+          <strong>3 weeks</strong>
+          <span>Structured reset that fits into real life without extreme dieting.</span>
+        </div>
+      </div>
+      <div class="formula__media">
+        {% if product.featured_media %}
+          <figure data-media-type="{{ product.featured_media.media_type }}">
+            {{ product.featured_media | media_tag: image_size: "1024x" }}
+          </figure>
+        {% elsif product.media.size > 0 %}
+          {% assign first_media = product.media.first %}
+          <figure data-media-type="{{ first_media.media_type }}">
+            {{ first_media | media_tag: image_size: "1024x" }}
+          </figure>
+        {% else %}
+          <div class="formula__media-placeholder">Preview of workbook trackers and planners</div>
+        {% endif %}
 {%- comment -%}
   Product template displaying images, product information, and add-to-cart form.
 {%- endcomment -%}
@@ -93,6 +183,32 @@
     </div>
   </div>
 
+  <div class="formula__section" id="method">
+    <div class="formula__section-header">
+      <h2 class="formula__section-title">Master the 18-10-8-4-1 method</h2>
+      <p class="formula__section-text">Every lever works together so you can accelerate fat loss, balance energy, and feel in control every single day.</p>
+    </div>
+    <div class="formula__pillars">
+      <article class="formula__pillar">
+        <strong>18</strong>
+        <p>hours fasting expands your fat-burning window without complicated macros.</p>
+      </article>
+      <article class="formula__pillar">
+        <strong>10,000</strong>
+        <p>steps keep your metabolism active through achievable movement bursts.</p>
+      </article>
+      <article class="formula__pillar">
+        <strong>8</strong>
+        <p>hours of sleep let hormones reset so cravings drop and recovery soars.</p>
+      </article>
+      <article class="formula__pillar">
+        <strong>4</strong>
+        <p>liters of hydration boost digestion, focus, and skin clarity.</p>
+      </article>
+      <article class="formula__pillar">
+        <strong>1</strong>
+        <p>gram of protein per kg protects lean muscle while the scale trends down.</p>
+      </article>
   <div class="product-landing__features" aria-labelledby="features-heading">
     <div class="product-landing__feature-intro">
       <h2 id="features-heading">What’s inside the workbook</h2>
@@ -174,5 +290,128 @@
         <p>Yes! Print new copies or duplicate the digital pages to repeat the challenge anytime you need a reset.</p>
       </details>
     </div>
+  </div>
+
+  <div class="formula__section formula__section--journey" id="roadmap">
+    <div class="formula__section-header">
+      <h2 class="formula__section-title">The 21-day transformation roadmap</h2>
+      <p class="formula__section-text">Use the workbook to set targets, lock in habits, and stack momentum without ever wondering what comes next.</p>
+    </div>
+    <ol class="formula__timeline">
+      <li data-phase="Prep">
+        <h3>Download & plan</h3>
+        <p>Print or import to your tablet, map fasting windows, and choose your protein go-tos.</p>
+      </li>
+      <li data-phase="Days 1-7">
+        <h3>Stabilize the rhythm</h3>
+        <p>Check off habits daily, use hydration cues, and log morning energy + evening wins.</p>
+      </li>
+      <li data-phase="Days 8-14">
+        <h3>Measure the shift</h3>
+        <p>Weekly dashboards reveal weight, measurements, sleep quality, and mood trends.</p>
+      </li>
+      <li data-phase="Days 15-21">
+        <h3>Lock results in</h3>
+        <p>Use celebration prompts, meal swaps, and next-round planning pages to keep the momentum.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="formula__section" id="inside">
+    <div class="formula__section-header">
+      <h2 class="formula__section-title">What’s inside the workbook</h2>
+      <p class="formula__section-text">Open any page and you’ll see why challengers stay motivated—everything is laid out and ready to follow.</p>
+    </div>
+    <div class="formula__inside">
+      <article class="formula__card">
+        <h3>Daily command center</h3>
+        <p>Track fasting windows, hydration liters, step counts, sleep score, and protein targets with intuitive tick boxes.</p>
+      </article>
+      <article class="formula__card">
+        <h3>Weekly reflections</h3>
+        <p>Snapshot measurements, journaling prompts, and mindset checkpoints help you course-correct fast.</p>
+      </article>
+      <article class="formula__card">
+        <h3>Reset toolkit</h3>
+        <p>Kitchen prep, habit stacking scripts, and bonus templates for post-challenge maintenance.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="formula__section formula__section--testimonials" id="proof">
+    <div class="formula__section-header">
+      <h2 class="formula__section-title">Real challengers, real results</h2>
+      <p class="formula__section-text">Join thousands of people who unlocked consistent weight loss, better sleep, and more energy in just three weeks.</p>
+    </div>
+    <div class="formula__testimonials">
+      <article class="formula__testimonial">
+        <blockquote>“I used to juggle five different trackers. This workbook gave me one rhythm to follow and I dropped 6.4 kg in 20 days.”</blockquote>
+        <cite>— Lena · Busy mom of two</cite>
+      </article>
+      <article class="formula__testimonial">
+        <blockquote>“The hydration + sleep prompts completely changed my mornings. The scale moved, but my energy shift was the real win.”</blockquote>
+        <cite>— Marcus · Down 5.1 kg</cite>
+      </article>
+      <article class="formula__testimonial">
+        <blockquote>“Seeing the daily boxes fill in kept me addicted to the process. I’m starting a second round with my partner now.”</blockquote>
+        <cite>— Aya · Confidence level 9/10</cite>
+      </article>
+    </div>
+  </div>
+
+  <div class="formula__section formula__section--science" id="science">
+    <div class="formula__section-header">
+      <h2 class="formula__section-title">The science behind the system</h2>
+      <p class="formula__section-text">Each lever is grounded in metabolic research so you can trust the process while you work it.</p>
+    </div>
+    <div class="formula__science">
+      <article class="formula__science-card">
+        <h3>Metabolic flexibility</h3>
+        <p>Extended fasting windows encourage fat adaptation, insulin sensitivity, and appetite control.</p>
+      </article>
+      <article class="formula__science-card">
+        <h3>Movement nutrition</h3>
+        <p>10,000 steps act like a gentle metabolism dial—enough to burn, not enough to burn out.</p>
+      </article>
+      <article class="formula__science-card">
+        <h3>Recovery-first approach</h3>
+        <p>Sleep and hydration optimize hormones, detoxification, and cognitive sharpness.</p>
+      </article>
+      <article class="formula__science-card">
+        <h3>Protein prioritization</h3>
+        <p>Hitting 1 g/kg keeps lean muscle intact so your body composition shifts visibly.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="formula__section formula__section--faq" id="faq">
+    <div class="formula__section-header">
+      <h2 class="formula__section-title">FAQ</h2>
+      <p class="formula__section-text">Quick answers so you can start the challenge today.</p>
+    </div>
+    <div class="formula__faq">
+      <details>
+        <summary>How fast do I get the download?</summary>
+        <p>Immediately after checkout—access the PDF on any device and start printing or annotating within minutes.</p>
+      </details>
+      <details>
+        <summary>Can I adjust the fasting window?</summary>
+        <p>Yes. Start at 14 or 16 hours with the ramp-up plan until you comfortably reach 18-hour stretches.</p>
+      </details>
+      <details>
+        <summary>Is it beginner friendly?</summary>
+        <p>Absolutely. Habit primers walk you through each lever with simple language and checklists.</p>
+      </details>
+      <details>
+        <summary>Do I need special equipment?</summary>
+        <p>No extra gadgets required—your phone step counter and this workbook are enough. Optional upgrades are suggested for enthusiasts.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="formula__closer">
+    <h2>Ready to lock in the 18-10-8-4-1 rhythm?</h2>
+    <p>Download the workbook, follow the daily prompts, and watch your body and confidence reset in just three weeks.</p>
+    <a href="#Product-{{ product.id }}" class="button button--primary">Start the challenge</a>
   </div>
 </section>
