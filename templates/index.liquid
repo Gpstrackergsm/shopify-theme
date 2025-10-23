@@ -1,9 +1,155 @@
 {%- comment -%}
-  Homepage template featuring a hero banner and featured products section.
+  Fashion-forward landing page featuring editorial storytelling, hero imagery, curated collections, and brand signals.
 {%- endcomment -%}
+
 <section class="hero" aria-labelledby="HeroTitle">
-  <h1 id="HeroTitle" class="hero__title">{{ 'templates.index.hero_title' | t }}</h1>
-  <p class="hero__subtitle">{{ 'templates.index.hero_subtitle' | t }}</p>
+  <div class="hero__content">
+    <p class="hero__eyebrow">{{ 'templates.index.hero_eyebrow' | t }}</p>
+    <h1 id="HeroTitle" class="hero__title">{{ 'templates.index.hero_title' | t }}</h1>
+    <p class="hero__subtitle">{{ 'templates.index.hero_subtitle' | t }}</p>
+    <div class="hero__actions">
+      <a class="button button--primary" href="/collections/all">{{ 'templates.index.hero_cta_primary' | t }}</a>
+      <a class="button button--ghost" href="#StorySection">{{ 'templates.index.hero_cta_secondary' | t }}</a>
+    </div>
+  </div>
+  <div class="hero__media" role="presentation" aria-hidden="true">
+    <span class="hero__media-highlight">{{ 'templates.index.hero_media_caption' | t }}</span>
+  </div>
+</section>
+
+<section id="StorySection" class="section section--story" aria-labelledby="StoryHeading">
+  <div class="section__grid">
+    <div>
+      <h2 id="StoryHeading" class="section__heading">{{ 'templates.index.story_heading' | t }}</h2>
+      <p class="section__subheading">{{ 'templates.index.story_subheading' | t }}</p>
+    </div>
+    <div class="story__content">
+      <p>{{ 'templates.index.story_body_1' | t }}</p>
+      <p>{{ 'templates.index.story_body_2' | t }}</p>
+      <a class="link-inline" href="/pages/about">{{ 'templates.index.story_link' | t }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--collections" aria-labelledby="CollectionsHeading">
+  <div class="section__header">
+    <h2 id="CollectionsHeading" class="section__heading">{{ 'templates.index.collections_heading' | t }}</h2>
+    <p class="section__subheading">{{ 'templates.index.collections_subheading' | t }}</p>
+  </div>
+  <div class="collection-grid" role="list">
+    <article class="collection-card" role="listitem">
+      <div class="collection-card__media collection-card__media--new-arrivals" aria-hidden="true"></div>
+      <div class="collection-card__content">
+        <h3 class="collection-card__title">{{ 'templates.index.collection_new_arrivals_title' | t }}</h3>
+        <p class="collection-card__description">{{ 'templates.index.collection_new_arrivals_copy' | t }}</p>
+        <a class="link-inline" href="/collections/new">{{ 'templates.index.collection_shop_link' | t }}</a>
+      </div>
+    </article>
+    <article class="collection-card" role="listitem">
+      <div class="collection-card__media collection-card__media--essentials" aria-hidden="true"></div>
+      <div class="collection-card__content">
+        <h3 class="collection-card__title">{{ 'templates.index.collection_essentials_title' | t }}</h3>
+        <p class="collection-card__description">{{ 'templates.index.collection_essentials_copy' | t }}</p>
+        <a class="link-inline" href="/collections/essentials">{{ 'templates.index.collection_shop_link' | t }}</a>
+      </div>
+    </article>
+    <article class="collection-card" role="listitem">
+      <div class="collection-card__media collection-card__media--atelier" aria-hidden="true"></div>
+      <div class="collection-card__content">
+        <h3 class="collection-card__title">{{ 'templates.index.collection_atelier_title' | t }}</h3>
+        <p class="collection-card__description">{{ 'templates.index.collection_atelier_copy' | t }}</p>
+        <a class="link-inline" href="/collections/signature">{{ 'templates.index.collection_shop_link' | t }}</a>
+      </div>
+    </article>
+  </div>
 </section>
 
 {% section 'featured-products' %}
+
+<section class="section section--lookbook" aria-labelledby="LookbookHeading">
+  <div class="section__header">
+    <h2 id="LookbookHeading" class="section__heading">{{ 'templates.index.lookbook_heading' | t }}</h2>
+    <p class="section__subheading">{{ 'templates.index.lookbook_subheading' | t }}</p>
+  </div>
+  <div class="lookbook-grid" role="list">
+    <figure class="lookbook-card" role="listitem">
+      <div class="lookbook-card__media lookbook-card__media--tailored" aria-hidden="true"></div>
+      <div class="lookbook-card__content">
+        <span class="lookbook-card__tag">{{ 'templates.index.lookbook_tag_tailored' | t }}</span>
+        <h3 class="lookbook-card__title">{{ 'templates.index.lookbook_title_tailored' | t }}</h3>
+        <p class="lookbook-card__description">{{ 'templates.index.lookbook_copy_tailored' | t }}</p>
+      </div>
+    </figure>
+    <figure class="lookbook-card" role="listitem">
+      <div class="lookbook-card__media lookbook-card__media--weekend" aria-hidden="true"></div>
+      <div class="lookbook-card__content">
+        <span class="lookbook-card__tag">{{ 'templates.index.lookbook_tag_weekend' | t }}</span>
+        <h3 class="lookbook-card__title">{{ 'templates.index.lookbook_title_weekend' | t }}</h3>
+        <p class="lookbook-card__description">{{ 'templates.index.lookbook_copy_weekend' | t }}</p>
+      </div>
+    </figure>
+    <figure class="lookbook-card" role="listitem">
+      <div class="lookbook-card__media lookbook-card__media--evening" aria-hidden="true"></div>
+      <div class="lookbook-card__content">
+        <span class="lookbook-card__tag">{{ 'templates.index.lookbook_tag_evening' | t }}</span>
+        <h3 class="lookbook-card__title">{{ 'templates.index.lookbook_title_evening' | t }}</h3>
+        <p class="lookbook-card__description">{{ 'templates.index.lookbook_copy_evening' | t }}</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="section section--testimonials" aria-labelledby="TestimonialsHeading">
+  <div class="section__header">
+    <h2 id="TestimonialsHeading" class="section__heading">{{ 'templates.index.testimonials_heading' | t }}</h2>
+    <p class="section__subheading">{{ 'templates.index.testimonials_subheading' | t }}</p>
+  </div>
+  <div class="testimonial-grid" role="list">
+    <figure class="testimonial" role="listitem">
+      <blockquote class="testimonial__quote">{{ 'templates.index.testimonial_quote_one' | t }}</blockquote>
+      <figcaption class="testimonial__author">{{ 'templates.index.testimonial_author_one' | t }}</figcaption>
+    </figure>
+    <figure class="testimonial" role="listitem">
+      <blockquote class="testimonial__quote">{{ 'templates.index.testimonial_quote_two' | t }}</blockquote>
+      <figcaption class="testimonial__author">{{ 'templates.index.testimonial_author_two' | t }}</figcaption>
+    </figure>
+    <figure class="testimonial" role="listitem">
+      <blockquote class="testimonial__quote">{{ 'templates.index.testimonial_quote_three' | t }}</blockquote>
+      <figcaption class="testimonial__author">{{ 'templates.index.testimonial_author_three' | t }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section section--newsletter" aria-labelledby="NewsletterHeading">
+  <div class="newsletter">
+    <div class="newsletter__content">
+      <h2 id="NewsletterHeading" class="section__heading">{{ 'templates.index.newsletter_heading' | t }}</h2>
+      <p class="section__subheading">{{ 'templates.index.newsletter_subheading' | t }}</p>
+      <p class="newsletter__note">{{ 'templates.index.newsletter_note' | t }}</p>
+    </div>
+    {% form 'customer', id: 'NewsletterSignup', class: 'newsletter__form' %}
+      <div class="newsletter__inputs">
+        <label for="NewsletterEmail">
+          <span class="visually-hidden">{{ 'templates.index.newsletter_email_label' | t }}</span>
+          <input
+            id="NewsletterEmail"
+            type="email"
+            name="contact[email]"
+            autocomplete="email"
+            autocapitalize="off"
+            placeholder="{{ 'templates.index.newsletter_email_placeholder' | t }}"
+            required
+          >
+        </label>
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+      </div>
+      <button class="button button--primary" type="submit">{{ 'templates.index.newsletter_cta' | t }}</button>
+      {% if form.posted_successfully? %}
+        <p class="newsletter__message" role="status">{{ 'templates.index.newsletter_success' | t }}</p>
+      {% elsif form.errors %}
+        <p class="newsletter__message" role="alert">{{ 'templates.index.newsletter_error' | t }}</p>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
