@@ -1,0 +1,67 @@
+{%- comment -%}
+  Footer section that displays supplemental navigation, shop details, and social links.
+{%- endcomment -%}
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__branding">
+      <strong>{{ shop.name }}</strong>
+      <p class="footer__note">{{ 'sections.footer.copyright' | t }} &copy; {{ 'now' | date: '%Y' }}</p>
+    </div>
+    {% if section.settings.show_social_links %}
+      <div class="footer__social">
+        <span class="footer__note">{{ section.settings.social_heading }}</span>
+        <div class="footer__social-links">
+          {% if section.settings.social_instagram != blank %}
+            <a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>
+          {% endif %}
+          {% if section.settings.social_facebook != blank %}
+            <a href="{{ section.settings.social_facebook }}" target="_blank" rel="noopener">Facebook</a>
+          {% endif %}
+          {% if section.settings.social_pinterest != blank %}
+            <a href="{{ section.settings.social_pinterest }}" target="_blank" rel="noopener">Pinterest</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social_links",
+      "label": "Show social links",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Social heading",
+      "default": "Connect with us"
+    },
+    {
+      "type": "text",
+      "id": "social_instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "text",
+      "id": "social_facebook",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "text",
+      "id": "social_pinterest",
+      "label": "Pinterest URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

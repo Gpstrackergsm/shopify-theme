@@ -1,0 +1,35 @@
+{
+  "general": {
+    "welcome": "Welcome to {{ shop.name }}"
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu"
+    },
+    "featured_products": {
+      "title": "Featured products",
+      "empty": "Add a featured collection in the theme settings to showcase products here."
+    },
+    "footer": {
+      "copyright": "All rights reserved."
+    }
+  },
+  "templates": {
+    "index": {
+      "hero_title": "Design-led essentials for everyday living",
+      "hero_subtitle": "Discover modern products crafted with care, sustainable materials, and timeless silhouettes."
+    },
+    "collection": {
+      "empty": "This collection is currently empty."
+    },
+    "cart": {
+      "title": "Your cart",
+      "empty": "Your cart is empty right now."
+    }
+  },
+  "products": {
+    "product": {
+      "description": "Detailed description coming soon."
+    }
+  }
+}

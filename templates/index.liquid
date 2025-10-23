@@ -1,0 +1,9 @@
+{%- comment -%}
+  Homepage template featuring a hero banner and featured products section.
+{%- endcomment -%}
+<section class="hero" aria-labelledby="HeroTitle">
+  <h1 id="HeroTitle" class="hero__title">{{ 'templates.index.hero_title' | t }}</h1>
+  <p class="hero__subtitle">{{ 'templates.index.hero_subtitle' | t }}</p>
+</section>
+
+{% section 'featured-products' %}

@@ -1,0 +1,58 @@
+{%- comment -%}
+  Header section responsible for branding, navigation, and mobile menu toggle.
+{%- endcomment -%}
+<header class="header" role="banner">
+  <div class="header__inner">
+    <div class="header__branding">
+      {% if section.settings.logo_image != blank %}
+        <a href="/" class="header__logo" aria-label="{{ shop.name }}">
+          <img src="{{ section.settings.logo_image | image_url: width: 240 }}" alt="{{ shop.name }}" loading="lazy">
+        </a>
+      {% else %}
+        <a href="/" class="header__title">{{ shop.name }}</a>
+      {% endif %}
+    </div>
+    <button type="button" class="nav__toggle" data-nav-toggle aria-expanded="false" aria-controls="SiteNav">
+      <span class="visually-hidden">{{ 'sections.header.menu' | t }}</span>
+      &#9776;
+    </button>
+    {% if section.settings.menu != blank and linklists[section.settings.menu] %}
+      {% assign navigation = linklists[section.settings.menu] %}
+    {% else %}
+      {% assign navigation = linklists.main-menu %}
+    {% endif %}
+    <nav class="nav" id="SiteNav" data-nav aria-label="{{ 'sections.header.menu' | t }}">
+      {% if navigation != blank %}
+        {% for link in navigation.links %}
+          <a class="nav__link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a class="nav__link" href="/collections/all">{{ 'collections.general.all_of_collection' | t }}</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

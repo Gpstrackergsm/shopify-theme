@@ -1,0 +1,60 @@
+{%- comment -%}
+  Section that surfaces a curated selection of products from a chosen collection.
+{%- endcomment -%}
+<section class="section" aria-label="{{ 'sections.featured_products.title' | t }}">
+  <div class="section__header">
+    <h2 class="section__heading">{{ section.settings.heading | default: ('sections.featured_products.title' | t) }}</h2>
+    {% if section.settings.subheading != blank %}
+      <p class="section__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+  </div>
+  {% assign selected_collection = section.settings.collection | default: settings.featured_collection %}
+  {% assign collection = collections[selected_collection] %}
+  {% if collection and collection.products_count > 0 %}
+    <div class="product-grid">
+      {% for product in collection.products limit: section.settings.products_to_show %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>{{ 'sections.featured_products.empty' | t }}</p>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Featured products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured products"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured products"
+    }
+  ]
+}
+{% endschema %}
