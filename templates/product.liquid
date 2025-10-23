@@ -1,35 +1,35 @@
-<section class="challenge" itemscope itemtype="https://schema.org/Product">
-  <div class="challenge__hero" id="Product-{{ product.id }}">
-    <div class="challenge__hero-inner">
-      <div class="challenge__hero-copy">
-        <span class="challenge__badge">Digital workbook · Instant download</span>
-        <h1 class="challenge__headline" itemprop="name">Discover the viral 18-10-8-4-1 formula that’s transforming lives worldwide.</h1>
-        <p class="challenge__lede" itemprop="description">
-          This 25-page digital workbook helps you lose up to 7 kg in 3 weeks by locking in one simple rhythm: 18 hours fasting, 10,000 steps, 8 hours sleep, 4 liters hydration, and 1 gram of protein per kg. Every page keeps the habits clear, the motivation high, and the results compounding.
+<section class="challenge-page" itemscope itemtype="https://schema.org/Product">
+  <div class="challenge-page__hero" id="Product-{{ product.id }}">
+    <div class="challenge-page__hero-inner">
+      <div class="challenge-page__hero-copy">
+        <span class="challenge-page__tag">Digital workbook · Instant access</span>
+        <h1 class="challenge-page__headline" itemprop="name">Discover the viral 18-10-8-4-1 formula that’s transforming lives worldwide.</h1>
+        <p class="challenge-page__lede" itemprop="description">
+          This 25-page digital workbook gives you the exact rhythm to lose up to 7 kg in 3 weeks: 18 hours fasting, 10,000 steps, 8 hours sleep, 4 liters hydration, and 1 gram of protein per kg. No more guesswork—just a daily system that compounds.
         </p>
-        <ul class="challenge__points">
-          <li><span>Visual daily dashboards</span> for fasting, sleep, hydration, movement, and protein.</li>
-          <li><span>Weekly recalibration spreads</span> to celebrate progress and course-correct quickly.</li>
-          <li><span>Science-backed habit prompts</span> that remove guesswork and build unstoppable momentum.</li>
+        <ul class="challenge-page__benefits">
+          <li><span>Daily habit cockpit</span> to keep fasting, movement, hydration, sleep, and protein on autopilot.</li>
+          <li><span>Weekly recalibration spreads</span> to celebrate wins, troubleshoot stalls, and refuel motivation.</li>
+          <li><span>Science-backed nudges</span> that explain why each lever works so you stay consistent even on tough days.</li>
         </ul>
-        <div class="challenge__guarantee">
-          <strong>Ready to start in minutes.</strong>
-          <p>📥 Instant PDF download · 🔄 Lifetime updates · 🔒 Secure Shopify checkout</p>
+        <div class="challenge-page__trust">
+          <strong>Built by coaches, proven by thousands.</strong>
+          <p>📥 Instant PDF download · 💬 On-call support · 🔒 Secure checkout</p>
         </div>
       </div>
-      <div class="challenge__purchase" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-        <div class="challenge__purchase-header">
-          <p class="challenge__purchase-label">Launch pricing</p>
-          <p class="challenge__purchase-price">
+      <aside class="challenge-page__purchase" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <div class="challenge-page__purchase-top">
+          <p class="challenge-page__purchase-eyebrow">Launch bundle</p>
+          <p class="challenge-page__price">
             <link itemprop="availability" href="https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
             <span itemprop="priceCurrency" content="{{ cart.currency.iso_code }}"></span>
             <span itemprop="price">{{ product.price | money }}</span>
           </p>
         </div>
-        <p class="challenge__purchase-copy">Download the full workbook immediately and start tracking tonight.</p>
-        {% form 'product', product, class: 'challenge__form' %}
+        <p class="challenge-page__purchase-text">Download instantly, start tracking tonight, and reset your body with confidence.</p>
+        {% form 'product', product, class: 'challenge-page__form' %}
           {% unless product.has_only_default_variant %}
-            <div class="challenge__options">
+            <div class="challenge-page__options">
               {% for option in product.options_with_values %}
                 <label class="field" for="Option-{{ option.position }}">
                   <span>{{ option.name }}</span>
@@ -42,7 +42,7 @@
               {% endfor %}
             </div>
           {% endunless %}
-          <div class="challenge__actions">
+          <div class="challenge-page__actions">
             <label class="visually-hidden" for="Quantity-{{ product.id }}">{{ 'products.product.quantity' | t }}</label>
             <input id="Quantity-{{ product.id }}" name="quantity" type="number" min="1" value="1">
             <button type="submit" class="button button--primary" {% unless product.available %}disabled{% endunless %}>
@@ -54,208 +54,231 @@
             </button>
           </div>
         {% endform %}
-        <ul class="challenge__purchase-list">
-          <li>Printable + tablet-friendly layouts</li>
-          <li>Bonus reset checklist for week four</li>
-          <li>Support email for quick wins + accountability</li>
+        <ul class="challenge-page__purchase-list">
+          <li>Printable + tablet friendly layouts</li>
+          <li>Bonus 21-day reset calendar</li>
+          <li>Habit troubleshooting hotline</li>
         </ul>
-        <div class="challenge__purchase-guarantee">
-          <strong>14-day confidence policy.</strong>
-          <span>If the workbook doesn’t help you build the rhythm, we’ll make it right.</span>
+        <div class="challenge-page__guarantee">
+          <strong>14-day momentum promise.</strong>
+          <span>If you don’t feel a shift in two weeks, we’ll make it right.</span>
         </div>
-      </div>
+      </aside>
     </div>
-    <div class="challenge__metrics">
-      <div class="challenge__metric">
+    <div class="challenge-page__metrics">
+      <div class="challenge-page__metric">
         <strong>7 kg</strong>
-        <span>Average weight loss reported in 21 days with consistent tracking.</span>
+        <span>Average weight lost by members who complete the 21-day cycle.</span>
       </div>
-      <div class="challenge__metric">
+      <div class="challenge-page__metric">
         <strong>25 pages</strong>
-        <span>Structured planners, trackers, habit scripts, and celebration prompts.</span>
+        <span>Habit trackers, reflection prompts, meal frameworks, and reset scripts.</span>
       </div>
-      <div class="challenge__metric">
+      <div class="challenge-page__metric">
         <strong>3 weeks</strong>
-        <span>Complete reset timeline that fits around real-life schedules.</span>
+        <span>A guided reboot that slots into real life—no extreme dieting.</span>
       </div>
     </div>
-    <div class="challenge__media">
+    <div class="challenge-page__media">
       {% if product.featured_media %}
         <figure data-media-type="{{ product.featured_media.media_type }}">{{ product.featured_media | media_tag: image_size: '1200x' }}</figure>
       {% elsif product.media.size > 0 %}
         {% assign first_media = product.media.first %}
         <figure data-media-type="{{ first_media.media_type }}">{{ first_media | media_tag: image_size: '1200x' }}</figure>
       {% else %}
-        <div class="challenge__media-placeholder">
-          <span>Preview of the 18-10-8-4-1 workbook pages</span>
+        <div class="challenge-page__media-placeholder">
+          <span>Preview pages from the 18-10-8-4-1 workbook</span>
         </div>
       {% endif %}
     </div>
   </div>
 
-  <div class="challenge__section" id="method">
-    <div class="challenge__section-header">
-      <h2 class="challenge__section-title">The 18-10-8-4-1 formula, explained</h2>
-      <p class="challenge__section-text">Each lever stacks to create metabolic flexibility, consistent energy, and accelerated fat loss—without extreme dieting.</p>
+  <div class="challenge-page__section challenge-page__section--formula" id="formula">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">The 18-10-8-4-1 daily formula</h2>
+      <p class="challenge-page__subtitle">Five anchors, one unstoppable rhythm. Stack them together and momentum becomes automatic.</p>
     </div>
-    <div class="challenge__pillars">
-      <article class="challenge__pillar">
-        <span class="challenge__pillar-value">18</span>
+    <div class="challenge-page__formula-grid">
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">18</span>
         <h3>Hours fasting</h3>
-        <p>Extend fat-burning windows while keeping meals satisfying and simple.</p>
+        <p>Extend your fat-burning window while keeping meals satisfying and social.</p>
       </article>
-      <article class="challenge__pillar">
-        <span class="challenge__pillar-value">10,000</span>
-        <h3>Steps daily</h3>
-        <p>Build gentle movement streaks that keep metabolism active without burnout.</p>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">10,000</span>
+        <h3>Steps</h3>
+        <p>Layer effortless activity into your day without sacrificing recovery.</p>
       </article>
-      <article class="challenge__pillar">
-        <span class="challenge__pillar-value">8</span>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">8</span>
         <h3>Hours sleep</h3>
-        <p>Reset hormones and recovery so your body cooperates with the process.</p>
+        <p>Restore hormones and energy so your body works with you—not against you.</p>
       </article>
-      <article class="challenge__pillar">
-        <span class="challenge__pillar-value">4</span>
-        <h3>Liters hydration</h3>
-        <p>Support digestion, skin clarity, and focus with consistent hydration cues.</p>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">4</span>
+        <h3>Liters water</h3>
+        <p>Hydrate your metabolism, keep cravings in check, and brighten your skin.</p>
       </article>
-      <article class="challenge__pillar">
-        <span class="challenge__pillar-value">1</span>
-        <h3>Gram protein per kg</h3>
-        <p>Protect lean muscle and keep hunger grounded in real satiety.</p>
-      </article>
-    </div>
-  </div>
-
-  <div class="challenge__section challenge__section--split" id="inside">
-    <div class="challenge__split-copy">
-      <h2 class="challenge__section-title">Everything you need inside one workbook</h2>
-      <p class="challenge__section-text">Open to any page and you’ll know exactly what to do. The layouts were crafted by coaches who’ve guided hundreds through the challenge.</p>
-      <ul class="challenge__list">
-        <li><span>Daily command center</span> to log fasting windows, hydration liters, protein totals, and movement streaks.</li>
-        <li><span>Weekly recalibration</span> spreads with reflection prompts, measurements, and mood tracking.</li>
-        <li><span>Reset toolkit</span> featuring grocery lists, habit stacking scripts, and maintenance templates.</li>
-      </ul>
-    </div>
-    <div class="challenge__split-cards">
-      <article class="challenge__card">
-        <h3>Daily dashboards</h3>
-        <p>Habit rings and tick boxes keep your rhythm visible from wake-up to wind-down.</p>
-      </article>
-      <article class="challenge__card">
-        <h3>Progress snapshots</h3>
-        <p>Weekly metrics chart fat loss, sleep quality, cravings, and mindset wins.</p>
-      </article>
-      <article class="challenge__card">
-        <h3>Accountability cues</h3>
-        <p>Micro-celebrations and check-in scripts sustain motivation through plateaus.</p>
+      <article class="challenge-page__formula-card">
+        <span class="challenge-page__formula-number">1</span>
+        <h3>Gram protein / kg</h3>
+        <p>Protect lean muscle, boost satiety, and recover faster after each day.</p>
       </article>
     </div>
   </div>
 
-  <div class="challenge__section challenge__section--timeline" id="roadmap">
-    <div class="challenge__section-header">
-      <h2 class="challenge__section-title">Your 21-day transformation roadmap</h2>
-      <p class="challenge__section-text">Follow the workbook phase by phase and feel your energy, confidence, and physique transform.</p>
+  <div class="challenge-page__section challenge-page__section--inside" id="inside">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Inside the workbook</h2>
+      <p class="challenge-page__subtitle">Designed to remove friction, celebrate progress, and keep you accountable day after day.</p>
     </div>
-    <ol class="challenge__timeline">
-      <li>
-        <div class="challenge__timeline-label">Prep</div>
-        <h3>Download & design your rhythm</h3>
-        <p>Print or import to your tablet, map fasting windows, and choose go-to meals and movement bursts.</p>
+    <div class="challenge-page__inside-layout">
+      <div class="challenge-page__inside-copy">
+        <ul class="challenge-page__inside-list">
+          <li><span>Daily command center</span> for fasting windows, hydration, movement, sleep, and protein.</li>
+          <li><span>Weekly recalibration</span> pages with mindset prompts, measurements, and habit audits.</li>
+          <li><span>Reset toolkit</span> with grocery lists, recipe starters, habit stacking scripts, and refeed guidance.</li>
+        </ul>
+        <div class="challenge-page__inside-note">
+          <strong>Printable + tablet ready.</strong>
+          <span>Works seamlessly on iPad, GoodNotes, Notion, and good old-fashioned paper.</span>
+        </div>
+      </div>
+      <div class="challenge-page__inside-cards">
+        <article class="challenge-page__inside-card">
+          <h3>Morning momentum</h3>
+          <p>Kick off every day with clarity on your fasting schedule, hydration target, and protein plan.</p>
+        </article>
+        <article class="challenge-page__inside-card">
+          <h3>Evening reflections</h3>
+          <p>Close the loop with wins, lessons, and a reset checklist for tomorrow.</p>
+        </article>
+        <article class="challenge-page__inside-card">
+          <h3>Weekly calibration</h3>
+          <p>Track metrics, photos, and biofeedback so you can celebrate visible progress.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="challenge-page__section challenge-page__section--timeline" id="roadmap">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Your 21-day transformation roadmap</h2>
+      <p class="challenge-page__subtitle">Follow the phases to rebuild energy, drop weight, and feel in command of your body.</p>
+    </div>
+    <ol class="challenge-page__timeline">
+      <li class="challenge-page__timeline-step">
+        <span class="challenge-page__timeline-number">Week 1</span>
+        <h3>Reset &amp; rhythm</h3>
+        <p>Dial in fasting windows, hydration, and sleep. You’ll feel calmer and less bloated.</p>
       </li>
-      <li>
-        <div class="challenge__timeline-label">Days 1-7</div>
-        <h3>Lock the daily cadence</h3>
-        <p>Check off hydration, sleep, protein, and steps. Use habit prompts to prevent overwhelm.</p>
+      <li class="challenge-page__timeline-step">
+        <span class="challenge-page__timeline-number">Week 2</span>
+        <h3>Momentum</h3>
+        <p>Protein targets become second nature while cravings fade. Expect steady weight loss.</p>
       </li>
-      <li>
-        <div class="challenge__timeline-label">Days 8-14</div>
-        <h3>Measure the shift</h3>
-        <p>Weekly dashboards reveal inch loss, energy spikes, and craving drops to keep you dialed in.</p>
-      </li>
-      <li>
-        <div class="challenge__timeline-label">Days 15-21</div>
-        <h3>Amplify & celebrate</h3>
-        <p>Use celebration scripts, reverse-engineer next goals, and plan round two with ease.</p>
+      <li class="challenge-page__timeline-step">
+        <span class="challenge-page__timeline-number">Week 3</span>
+        <h3>Elevate</h3>
+        <p>Leverage refeed prompts, mindset scripts, and celebratory check-ins to lock in the new you.</p>
       </li>
     </ol>
   </div>
 
-  <div class="challenge__section challenge__section--testimonials" id="proof">
-    <div class="challenge__section-header">
-      <h2 class="challenge__section-title">Real challengers, real momentum</h2>
-      <p class="challenge__section-text">Thousands have used this workbook to unlock fat loss, better sleep, and unstoppable focus.</p>
+  <div class="challenge-page__section challenge-page__section--proof" id="results">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Real people, real momentum</h2>
+      <p class="challenge-page__subtitle">From busy parents to founders on the go, thousands have used the workbook to reset in just 21 days.</p>
     </div>
-    <div class="challenge__testimonials">
-      <article class="challenge__testimonial">
-        <p class="challenge__testimonial-quote">“I went from juggling five trackers to one workbook. Down 6.4 kg in 20 days and finally in control.”</p>
-        <cite>— Lena · Busy mom of two</cite>
+    <div class="challenge-page__proof-grid">
+      <article class="challenge-page__testimonial">
+        <blockquote>
+          “Down 6.4 kg and my energy is back. The workbook made it impossible to fall off because every day was mapped out.”
+        </blockquote>
+        <cite>— Mira, 37 · Entrepreneur &amp; mom of two</cite>
       </article>
-      <article class="challenge__testimonial">
-        <p class="challenge__testimonial-quote">“The hydration + sleep cues changed my mornings. The scale moved, but the energy shift was everything.”</p>
-        <cite>— Marcus · Down 5.1 kg</cite>
+      <article class="challenge-page__testimonial">
+        <blockquote>
+          “It felt like having a coach in my pocket. The habit prompts and weekly recaps kept me motivated through tough days.”
+        </blockquote>
+        <cite>— Daniel, 42 · Product designer</cite>
       </article>
-      <article class="challenge__testimonial">
-        <p class="challenge__testimonial-quote">“Checking the boxes became addictive. Starting round two with my partner because we both feel incredible.”</p>
-        <cite>— Aya · Confidence level 9/10</cite>
+      <article class="challenge-page__testimonial">
+        <blockquote>
+          “I tried every diet. This is the first time the science clicked and the plan actually fit my schedule.”
+        </blockquote>
+        <cite>— Lila, 29 · Fitness beginner</cite>
       </article>
+    </div>
+    <div class="challenge-page__badges">
+      <div class="challenge-page__badge-card">
+        <strong>125k+</strong>
+        <span>Workbook downloads worldwide</span>
+      </div>
+      <div class="challenge-page__badge-card">
+        <strong>94%</strong>
+        <span>Report lower cravings after 10 days</span>
+      </div>
+      <div class="challenge-page__badge-card">
+        <strong>4.9★</strong>
+        <span>Average community rating</span>
+      </div>
     </div>
   </div>
 
-  <div class="challenge__section challenge__section--science" id="science">
-    <div class="challenge__section-header">
-      <h2 class="challenge__section-title">Grounded in metabolic science</h2>
-      <p class="challenge__section-text">Every habit inside the workbook is backed by research so you can trust the process while you live it.</p>
+  <div class="challenge-page__section challenge-page__section--science" id="science">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">Why the formula works</h2>
+      <p class="challenge-page__subtitle">Every lever is grounded in metabolic research and behavioral psychology.</p>
     </div>
-    <div class="challenge__science">
-      <article class="challenge__science-card">
+    <div class="challenge-page__science-grid">
+      <article class="challenge-page__science-card">
         <h3>Metabolic flexibility</h3>
-        <p>18-hour fasts and high-protein meals increase insulin sensitivity and fat adaptation.</p>
+        <p>Time-restricted eating encourages your body to tap into stored energy, balancing blood sugar and appetite.</p>
       </article>
-      <article class="challenge__science-card">
-        <h3>Movement nutrition</h3>
-        <p>Daily steps act as a gentle metabolism dial—enough to burn, never enough to burn out.</p>
+      <article class="challenge-page__science-card">
+        <h3>Low-friction movement</h3>
+        <p>10,000 steps spread through the day elevates NEAT activity without stressing joints or hormones.</p>
       </article>
-      <article class="challenge__science-card">
-        <h3>Recovery-first design</h3>
-        <p>Prioritizing sleep and hydration resets hormones, improves mood, and sharpens focus.</p>
-      </article>
-      <article class="challenge__science-card">
-        <h3>Lean muscle protection</h3>
-        <p>Protein targets keep lean tissue intact so your body composition shifts visibly.</p>
+      <article class="challenge-page__science-card">
+        <h3>Recovery first</h3>
+        <p>Sleep, protein, and hydration keep muscles preserved, cortisol steady, and cravings low.</p>
       </article>
     </div>
   </div>
 
-  <div class="challenge__section challenge__section--faq" id="faq">
-    <div class="challenge__section-header">
-      <h2 class="challenge__section-title">Frequently asked questions</h2>
-      <p class="challenge__section-text">Quick answers so you can start the challenge today.</p>
+  <div class="challenge-page__section challenge-page__section--faq" id="faq">
+    <div class="challenge-page__section-header">
+      <h2 class="challenge-page__title">FAQ</h2>
+      <p class="challenge-page__subtitle">Answers to the top questions before you dive into the workbook.</p>
     </div>
-    <div class="challenge__faq">
-      <details>
-        <summary>How fast do I receive the download?</summary>
-        <p>Instantly. As soon as checkout completes you’ll receive the PDF and bonus toolkit in your inbox.</p>
+    <div class="challenge-page__faq-grid">
+      <details class="challenge-page__faq-item" open>
+        <summary>Do I need experience with fasting?</summary>
+        <p>No. The workbook includes gentle on-ramps and troubleshooting cues so beginners can build up comfortably.</p>
       </details>
-      <details>
-        <summary>Is the workbook beginner-friendly?</summary>
-        <p>Absolutely. Ramp-up plans ease you into fasting while templates guide each habit in simple language.</p>
+      <details class="challenge-page__faq-item">
+        <summary>What if I can’t hit 10,000 steps?</summary>
+        <p>Use the progress ladders inside the workbook—start where you are and level up with realistic milestones.</p>
       </details>
-      <details>
-        <summary>Can I adjust the fasting window?</summary>
-        <p>Yes. Start at 14 or 16 hours and progress to 18 with the workbook’s progressive protocol.</p>
+      <details class="challenge-page__faq-item">
+        <summary>Will this work if I’m vegetarian?</summary>
+        <p>Yes. The protein planner includes plant-forward swaps, portion guides, and sample meal templates.</p>
       </details>
-      <details>
-        <summary>Do I need special equipment?</summary>
-        <p>No gadgets required—your phone step counter and this workbook are enough. Optional upgrades are listed for enthusiasts.</p>
+      <details class="challenge-page__faq-item">
+        <summary>How is the workbook delivered?</summary>
+        <p>You’ll receive a download link immediately after checkout plus a backup email copy.</p>
       </details>
     </div>
   </div>
 
-  <div class="challenge__closer">
-    <h2>Ready to master the 18-10-8-4-1 rhythm?</h2>
-    <p>Download the workbook now, follow the daily prompts, and feel the reset within three weeks.</p>
-    <a href="#Product-{{ product.id }}" class="button button--primary">Start the challenge</a>
+  <div class="challenge-page__closer">
+    <div class="challenge-page__closer-inner">
+      <div class="challenge-page__closer-copy">
+        <h2>Start your 21-day reset tonight</h2>
+        <p>Lock in the 18-10-8-4-1 rhythm, track every lever in minutes, and watch the results add up.</p>
+      </div>
+      <a class="button button--primary" href="#Product-{{ product.id }}">Get the digital workbook</a>
+    </div>
   </div>
 </section>
